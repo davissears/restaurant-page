@@ -2,15 +2,10 @@ import { serve } from "bun";
 
 import homepage from "../public/template.html";
 
-await Bun.build({
-  entrypoints: ["./index.html"],
-  outdir: "./dist",
-  env: "inline",
-});
-
 // Only inline env vars with a specific prefix (recommended)
 await Bun.build({
-  entrypoints: ["./index.html"],
+  entrypoints: ["public/template.html"],
+
   outdir: "./dist",
   env: "PUBLIC_*",
 });
