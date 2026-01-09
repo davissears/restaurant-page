@@ -3,7 +3,7 @@
   "module": "index.ts",
   "scripts": {
     "dev": "bun dev.ts",
-    "build": "bun build.ts"
+    "build": "bun src/app.ts"
   },
   "type": "module",
   "private": true,
