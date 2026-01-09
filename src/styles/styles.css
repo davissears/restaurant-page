@@ -74,33 +74,54 @@ h6 {
 #__next {
     isolation: isolate;
 }
-/*full page*/
-/*#content {
-}*/
+
+/*global*/
+/*TODO: add global color variables*/
+body {
+    font-family:
+        "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+        Arial, sans-serif;
+}
 
 /*header*/
 header {
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
     height: 10vh;
+}
+
+#navContainer {
+    display: flex;
+    justify-self: left;
+    margin-left: 1rem;
+    line-height: 2rem;
 }
 
 nav button {
     background: none;
     border: none;
+    font-size: 2rem;
+    width: 6rem;
 }
 
 nav button:hover {
     font-weight: bolder;
 }
 
+#logo {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
 #socialContainer {
+    margin-right: 1rem;
+    justify-self: right;
+    display: flex;
     place-items: center;
-    display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 2fr;
-    justify-content: end;
+    justify-content: right;
 }
 
 #instaButton {
@@ -108,8 +129,8 @@ nav button:hover {
     background: none;
 }
 #instaIcon {
-    width: 3rem;
-    height: auto;
+    width: auto;
+    height: 2rem;
 }
 #resyButton {
     border: none;
@@ -117,6 +138,6 @@ nav button:hover {
 }
 #resyIcon {
     width: auto;
-    height: 3rem;
+    height: 2rem;
     color: black;
 }
