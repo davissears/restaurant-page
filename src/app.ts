@@ -1,49 +1,46 @@
 import { serve } from "bun";
+// import homepage from "../public/template.html"; // Optional: if you want to serve the HTML file directly via import
 
-import homepage from "../public/template.html";
-
-// Only inline env vars with a specific prefix (recommended)
-await Bun.build({
-  entrypoints: ["public/template.html"],
-
+// Build the application
+console.log("Building application...");
+const buildResult = await Bun.build({
+  entrypoints: ["./public/template.html"], // Root-relative path assuming you run `bun src/app.ts` from project root
   outdir: "./dist",
-  env: "PUBLIC_*",
+  minify: true, // Minify for production
+  // env: "PUBLIC_*", // usage of env vars
 });
 
+if (!buildResult.success) {
+  console.error("Build failed!");
+  for (const message of buildResult.logs) {
+    console.error(message);
+  }
+} else {
+  console.log("Build successful!");
+}
+
+// Optional: Start a production server to serve the built files
+// This is useful if 'app.ts' is the entry point for your deployed container/server
 const server = serve({
-  routes: {
-    // ** HTML imports **
-    // Bundle & route index.html to "/". This uses HTMLRewriter to scan
-    // the HTML for `<script>` and `<link>` tags, runs Bun's JavaScript
-    // & CSS bundler on them, transpiles any TypeScript, JSX, and TSX,
-    // downlevels CSS with Bun's CSS parser and serves the result.
-    "/": homepage,
-    // Bundle & route dashboard.html to "/dashboard"
-    // FIX: NA
+  port: 3000,
+  fetch(req) {
+    const url = new URL(req.url);
+    // Serve files from the dist directory
+    let filePath = "./dist" + url.pathname;
 
-    // ** API endpoints ** (Bun v1.2.3+ required)
-    // "/api/users": {
-    //   async GET(req) {
-    //     const users = await sql`SELECT * FROM users`;
-    //     return Response.json(users);
-    //   },
-    //   async POST(req) {
-    //     const { name, email } = await req.json();
-    //     const [user] = await sql`INSERT INTO users (name, email) VALUES (${name}, ${email})`;
-    //     return Response.json(user);
-    //   },
-    // },
-    // "/api/users/:id": async req => {
-    //   const { id } = req.params;
-    //   const [user] = await sql`SELECT * FROM users WHERE id = ${id}`;
-    //   return Response.json(user);
-    // },
+    // Default to index.html (which is what template.html builds to)
+    if (url.pathname === "/") {
+      filePath = "./dist/index.html"; // template.html -> dist/index.html (usually) or dist/template.html depending on naming
+      // With bun build of html, it usually keeps the name or becomes index.html if it's the main entry.
+      // Let's verify the output name. Usually template.html -> dist/template.html unless renamed.
+      // But common convention is to serve index.html.
+      // Let's try serving the built file.
+      return new Response(Bun.file("./dist/template.html"));
+    }
+
+    const file = Bun.file(filePath);
+    return new Response(file);
   },
-
-  // Enable development mode for:
-  // - Detailed error messages
-  // - Hot reloading (Bun v1.2.3+ required)
-  development: true,
 });
 
-console.log(`Listening on ${server.url}`);
+console.log(`Production server listening on ${server.url}`);

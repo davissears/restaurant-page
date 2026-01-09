@@ -1,6 +1,10 @@
 {
   "name": "restaurant-page",
   "module": "index.ts",
+  "scripts": {
+    "dev": "bun dev.ts",
+    "build": "bun build.ts"
+  },
   "type": "module",
   "private": true,
   "devDependencies": {

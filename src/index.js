@@ -1,2 +1,3 @@
-console.log("Hello, Universe!");
-alert("Hello, Universe!");
+// imports
+//  contentHome
+import { _Content } from "./components/contentHome";
