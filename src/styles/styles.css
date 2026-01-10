@@ -81,14 +81,16 @@ body {
     font-family:
         "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
         Arial, sans-serif;
+    color: white;
 }
 
 /*header*/
 header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    place-items: center;
+
     height: 10vh;
+    background-color: transparent;
 }
 
 #navContainer {
@@ -99,14 +101,23 @@ header {
 }
 
 nav button {
+    margin-top: .5rem;
     background: none;
     border: none;
     font-size: 2rem;
     width: 6rem;
+    padding: 0px;
+    color: white;
 }
 
 nav button:hover {
     font-weight: bolder;
+}
+
+#logoContainer {
+    place-items: center;
+    -webkit-text-stroke: .1rem black;
+    text-shadow: .05rem .15rem .1rem black;
 }
 
 #logo {
@@ -115,10 +126,10 @@ nav button:hover {
 }
 
 #socialContainer {
+    margin-top: .5rem;
     margin-right: 1rem;
     justify-self: right;
     display: flex;
-    place-items: center;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 2fr;
     justify-content: right;
@@ -130,7 +141,7 @@ nav button:hover {
 }
 #instaIcon {
     width: auto;
-    height: 2rem;
+    height:1.5rem;
 }
 #resyButton {
     border: none;
