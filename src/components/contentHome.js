@@ -6,10 +6,17 @@ export const _Content = (() => {
   // define cotainer for content
   const contentContainer = document.getElementById("content");
   const test = document.createElement("p");
-  // test.textContent = "HelloWorld";
-  // contentContainer.appendChild(test);
-
   document.body.style.backgroundImage = `url(${homeBg})`;
   document.body.style.backgroundImage = `url(${homeBg})`;
-  document.body.style.backgroundSize = "cover"; // or "contain", or "100% 100%"
+  document.body.style.backgroundSize = "cover";
+  class Component {
+    constructor(tag, className, text = '') {
+      this.element = document.createElement(tag);
+      this.element.className = className;
+      this.element.textContent = text;
+    }
+    appendTo(parent) {
+      parent.appendChild(this.element);
+    }
+  }
 })();
