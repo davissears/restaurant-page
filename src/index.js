@@ -1,9 +1,14 @@
 // imports
 //  contentHome
-import { _Content } from "./components/contentHome";
-import homeBg from "../images/homeBackground.jpg";
+import { content } from "./components/content.js";
+import homeBackground from "../images/homeBackground.jpg";
 import aboutBg from "../images/aboutBackground.jpg";
 
-document.body.style.backgroundImage = `url(${homeBg})`;
-document.body.style.backgroundImage = `url(${homeBg})`;
-document.body.style.backgroundSize = "cover";
+// Get the Component class from the content function
+const { Background } = content();
+
+// Create an instance of Component (providing required tag and className)
+const homeBg = new Background(homeBackground);
+
+// Change the background using the imported image
+homeBg.changeBg();

@@ -1,19 +1,26 @@
 // loads home page content
 export const content = () => {
-  class Component {
-    constructor(tag, className, text = "") {
-      this.element = document.createElement(tag);
-      this.element.className = className;
-      this.element.textContent = text;
-      // this.image = image; // image is undefined in original code
+  class Background {
+    constructor(file) {
+      this.file = file;
     }
-    appendTo(parent) {
-      parent.appendChild(this.element);
-    }
-    changeBg(image) {
-      document.body.style.backgroundImage = `url(${image})`; // Used argument instead of this.image which was broken
+
+    changeBg() {
+      document.body.style.backgroundImage = `url(${this.file})`; // Used argument instead of this.image which was broken
       document.body.style.backgroundSize = "cover";
     }
   }
-  return { Component };
+  // class Component {
+  //   constructor(tag, className, text = "") {
+  //     this.element = document.createElement(tag);
+  //     this.element.className = className;
+  //     this.element.textContent = text;
+  //   }
+
+  //   // A helper to easily append this element to a parent
+  //   appendTo(parent) {
+  //     parent.appendChild(this.element);
+  //   }
+  // }
+  return { Background };
 };
