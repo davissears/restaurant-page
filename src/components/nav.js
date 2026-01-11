@@ -1,1 +1,4 @@
-export const nav = () => {};
+// listens for nav events
+export const nav = () => { 
+  
+};
