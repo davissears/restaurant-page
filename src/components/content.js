@@ -27,16 +27,21 @@ export class PageContent {
   updatePageContent() {
     // container
     const contentContainer = document.getElementById("content");
+    contentContainer
+      .querySelectorAll(".navContent")
+      .forEach((content) => content.remove());
     const textContainer = document.createElement("div");
-    contentContainer.appendChild(textContainer);
-    // header
-    const headerContent = document.createElement("h1");
-    headerContent.textContent = this.#header;
-    textContainer.appendChild(headerContent);
+    const headerContent = document.createElement("h2");
     const bodyContent = document.createElement("p");
+    // append textContainer
+    contentContainer.appendChild(textContainer);
+    // append header
+    headerContent.textContent = this.#header;
+    headerContent.setAttribute("class", "navContent");
+    textContainer.appendChild(headerContent);
+    // append body
     bodyContent.textContent = this.#body;
+    bodyContent.setAttribute("class", "navContent");
     contentContainer.appendChild(bodyContent);
   }
 }
-
-// TODO: create view text setter
