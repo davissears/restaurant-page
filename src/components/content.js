@@ -1,27 +1,42 @@
-// loads home page content
-export const content = () => {
-  // handles background image
-  class Background {
-    constructor(file) {
-      this.file = file;
-    }
-    // method changes bg image
-    changeBg() {
-      document.body.style.backgroundImage = `url(${this.file})`; // Used argument instead of this.image which was broken
-      document.body.style.backgroundSize = "cover";
-    }
+import { State } from "./state";
+
+// handles background image
+export class Background {
+  #view;
+  #file;
+  constructor(file, view) {
+    this.#file = file;
+    this.#view = view;
   }
-  // TODO: create class PageContent
+  // method changes bg image
+  changeBg() {
+    document.body.style.backgroundImage = `url(${this.#file})`;
+    document.body.style.backgroundSize = "cover";
+  }
+}
 
-  return { Background };
-};
+export class PageContent {
+  #header;
+  #view;
+  #body;
+  constructor(header, body, view) {
+    this.#header = header;
+    this.#body = body;
+    this.#view = view;
+  }
+  updatePageContent() {
+    // container
+    const contentContainer = document.getElementById("content");
+    const textContainer = document.createElement("div");
+    contentContainer.appendChild(textContainer);
+    // header
+    const headerContent = document.createElement("h1");
+    headerContent.textContent = this.#header;
+    textContainer.appendChild(headerContent);
+    const bodyContent = document.createElement("p");
+    bodyContent.textContent = this.#body;
+    contentContainer.appendChild(bodyContent);
+  }
+}
 
-// use:
-//      Get the Component class from the content function
-// const { Background } = content();
-
-//      Create an instance of Component (providing required tag and className)
-// const homeBg = new Background(homeBackground);
-
-//      Change the background using the imported image
-// homeBg.changeBg();
+// TODO: create view text setter

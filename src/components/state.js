@@ -1,4 +1,4 @@
-export class state extends EventTarget {
+export class State extends EventTarget {
   // private field variable prevents reursion
   #view;
   constructor(initPageView) {
@@ -35,4 +35,4 @@ export class state extends EventTarget {
 //      3.insert DOM update logic
 // });
 //      4.trigger update
-// appState.updateView('dashboard');
+// appState.updateView('about');
