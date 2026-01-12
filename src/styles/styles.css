@@ -160,6 +160,8 @@ nav button:hover {
 
 #content {
     place-items: center;
+    height: 50vh;
+    place-content: center;
 }
 .menu-item {
     display: grid;
@@ -173,4 +175,13 @@ nav button:hover {
 }
 .badges {
     font-weight: normal;
+}
+
+/*FIX: remove these rules and add as logic to content.js*/
+h2 {
+    place-self: center;
+}
+/*FIX: remove these rules and add as logic to content.js*/
+p {
+    place-self: center;
 }

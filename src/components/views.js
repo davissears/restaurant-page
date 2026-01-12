@@ -1,3 +1,5 @@
+// * `views.js` (The Data):
+//  * It contains only raw data: text, image paths, and arrays of menu items.
 // imports
 import homeBg from "../../images/homeBackground.jpg";
 import aboutBg from "../../images/aboutBackground.jpg";
@@ -77,7 +79,7 @@ export const viewsData = {
         description: "rum, garam masalla, corn",
         price: "12",
         gf: true,
-        vegan: true,
+        vegan: false,
         vegetarian: true,
       },
       {
