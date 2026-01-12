@@ -1,3 +1,5 @@
+import { appState } from "./state.js";
+
 // listens for nav events
 export const nav = () => {
   const homeButton = document.getElementById("home");
@@ -5,16 +7,14 @@ export const nav = () => {
   const menuButton = document.getElementById("menu");
 
   homeButton.addEventListener("click", () => {
-    // window.dispatchEvent(new CustomEvent('nav', { detail: 'home' }));
     appState.updateView("home");
   });
 
   aboutButton.addEventListener("click", () => {
-    // window.dispatchEvent(new CustomEvent('nav', { detail: 'about' }));
     appState.updateView("about");
   });
 
   menuButton.addEventListener("click", () => {
-    // window.dispatchEvent(new CustomEvent('nav', { detail: 'menu' }));
+    appState.updateView("menu");
   });
 };
