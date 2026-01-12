@@ -1,3 +1,7 @@
+// * `state.js` (The Model):
+//         Keeps track of the current view (e.g., 'home', 'menu').
+//         Dispatches an event when the state changes. It should not know about arrays or DOM elements.
+
 export class State extends EventTarget {
   // private field variable prevents reursion
   #view;
@@ -26,6 +30,7 @@ export class State extends EventTarget {
   }
 }
 
+export const appState = new State("home");
 // use:
 //      1.decalre state
 // const appState = new State('home');
