@@ -83,7 +83,7 @@ export const viewsData = {
         vegetarian: true,
       },
       {
-        dish: "cashew ice cream",
+        dish: "ice cream",
         course: "sweets",
         description: "cashew cream, vanilla, shortbread",
         price: "10",
