@@ -1,5 +1,5 @@
 // Refactored renderer
-
+// 
 const createMenuCard = (item) => {
   const card = document.createElement("div");
   card.className = "menu-item";
@@ -67,15 +67,35 @@ export const render = (data) => {
     contentContainer.appendChild(textContainer);
   }
 
-  // 4. Render Menu Grid
+  // 4. Render Menu Grid (Grouped by Course)
   if (data.items) {
-    const menuGrid = document.createElement("div");
-    menuGrid.className = "menu-grid";
+    const courses = ["starter", "main", "sweets"];
 
-    data.items.forEach((item) => {
-      menuGrid.appendChild(createMenuCard(item));
+    courses.forEach((course) => {
+      // 1. Filter items for this course
+      const courseItems = data.items.filter((item) => item.course === course);
+      if (courseItems.length === 0) return;
+
+      // 2. Section Header
+      const header = document.createElement("h2");
+      header.className = "course-header";
+      // Capitalize and pluralize (simple logic for this specific data)
+      header.textContent =
+        course.charAt(0).toUpperCase() +
+        course.slice(1) +
+        (course === "sweets" ? "" : "s");
+
+      contentContainer.appendChild(header);
+
+      // 3. Section Grid
+      const sectionGrid = document.createElement("div");
+      sectionGrid.className = "menu-grid";
+
+      courseItems.forEach((item) => {
+        sectionGrid.appendChild(createMenuCard(item));
+      });
+
+      contentContainer.appendChild(sectionGrid);
     });
-
-    contentContainer.appendChild(menuGrid);
   }
 };

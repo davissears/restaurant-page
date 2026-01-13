@@ -177,11 +177,10 @@ nav button:hover {
     font-weight: normal;
 }
 
-/*FIX: remove these rules and add as logic to content.js*/
-h2 {
-    place-self: center;
-}
-/*FIX: remove these rules and add as logic to content.js*/
-p {
-    place-self: center;
+.course-header {
+    text-align: center;
+    font-style: italic;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
 }
