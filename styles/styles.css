@@ -1,0 +1,186 @@
+/*reset*/
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+    margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        interpolate-size: allow-keywords;
+    }
+}
+
+body {
+    /* 4. Add accessible line-height */
+    line-height: 1.5;
+    /* 5. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+    text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+    isolation: isolate;
+}
+
+/*global*/
+/*TODO: add global color variables*/
+body {
+    font-family:
+        "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+        Arial, sans-serif;
+    color: white;
+    min-height: 100vh;
+}
+
+/*header*/
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    height: 10vh;
+    background-color: transparent;
+}
+
+#navContainer {
+    display: flex;
+    justify-self: left;
+    margin-left: 1rem;
+    line-height: 2rem;
+}
+
+nav button {
+    margin-top: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    width: 6rem;
+    padding: 0px;
+    color: white;
+    opacity: 0.5;
+}
+
+nav button:hover {
+    text-shadow: 1px 1px 10px white;
+    font-weight: bolder;
+    opacity: 1;
+}
+
+#logoContainer {
+    place-items: center;
+    justify-content: center;
+    -webkit-text-stroke: 1px black;
+    text-shadow: 3px 1px black;
+}
+
+#logo {
+    font-size: 4rem;
+    font-weight: bolder;
+}
+
+#socialContainer {
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+    justify-self: right;
+    display: flex;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr;
+    justify-content: right;
+}
+
+#instaButton {
+    border: none;
+    background: none;
+}
+#instaIcon {
+    width: auto;
+    height: 1.5rem;
+}
+#resyButton {
+    border: none;
+    background: none;
+}
+#resyIcon {
+    width: auto;
+    height: 1.5rem;
+    color: black;
+}
+
+#content {
+    place-items: center;
+    height: 50vh;
+    place-content: center;
+}
+.menu-item {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.menu-header {
+    display: flex;
+    place-self: start;
+}
+.badges {
+    font-weight: normal;
+}
+
+.course-header {
+    text-align: center;
+    font-style: italic;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
